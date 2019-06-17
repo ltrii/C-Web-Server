@@ -85,15 +85,20 @@ void get_d20(int fd)
 {
     // Generate a random number between 1 and 20 inclusive
     
-    ///////////////////
-    // IMPLEMENT ME! //
-    ///////////////////
+    char str[5];
+    int randnum = rand() % 20 + 1;
+    sprintf(str, "%d", randnum);
+    if (randnum == NULL)
+    {
+
+        fprintf(stderr, "PRINT ERROR --> Null\n");
+        exit(4);
+    }
 
     // Use send_response() to send it back as text/plain data
 
-    ///////////////////
-    // IMPLEMENT ME! //
-    ///////////////////
+    send_response(fd, "HTTP/1.1 200 OK", "text/plain", str, strlen(str));
+
 }
 
 /**
